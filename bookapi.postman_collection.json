@@ -1,0 +1,355 @@
+{
+	"info": {
+		"_postman_id": "398c9e23-f381-4264-897d-88c10cec7c09",
+		"name": "bookapi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "24755294",
+		"_collection_link": "https://lunar-comet-343734.postman.co/workspace/webdev~f69d39e3-b85c-431a-811a-67f95d1dc5ca/collection/24755294-398c9e23-f381-4264-897d-88c10cec7c09?action=share&source=collection_link&creator=24755294"
+	},
+	"item": [
+		{
+			"name": "auth/register",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\", \"password\":\"password123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/auth/register"
+			},
+			"response": []
+		},
+		{
+			"name": "auth/login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"email\":\"test@example.com\", \"password\":\"password123\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/auth/login"
+			},
+			"response": []
+		},
+		{
+			"name": "Search Books",
+			"request": {
+				"auth": {
+					"type": "jwt",
+					"jwt": {
+						"algorithm": "HS256",
+						"isSecretBase64Encoded": false,
+						"payload": "{}",
+						"addTokenTo": "header",
+						"headerPrefix": "Bearer",
+						"queryParamKey": "token",
+						"header": "{}"
+					}
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0NTQwMzY0MiwiZXhwIjoxNzQ1NDkwMDQyfQ.CldqXb2B5PIGDmzXg5OqwR8UGxqclBkGguUd4w2LYus"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/books?search=Harry",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Harry"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addbooks",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Atomic Habits\", \"author\": \"James Clear\", \"totalPages\": 320, \"genre\": \"Self-help\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/books"
+			},
+			"response": []
+		},
+		{
+			"name": "readbooks",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:5000/api/books?search=Alc",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"books"
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Alc"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Read Book by ID",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": "http://localhost:5000/api/books/1"
+			},
+			"response": []
+		},
+		{
+			"name": "Updatebookbyid",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"title\": \"Atomic Habits - Updated\", \"author\": \"James Clear\", \"totalPages\": 350, \"genre\": \"Productivity\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/books/1"
+			},
+			"response": []
+		},
+		{
+			"name": "deletebook",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "addreadinglist",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "updatereadinglist",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "deletefromreadinglist",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": "http://localhost:5000/api/user-books/1"
+			},
+			"response": []
+		},
+		{
+			"name": "getreadinglist",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": "http://localhost:5000/api/user-books"
+			},
+			"response": []
+		},
+		{
+			"name": "addreview",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"bookId\":1, \"rating\":5, \"reviewText\":\"Amazing read!\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/reviews"
+			},
+			"response": []
+		},
+		{
+			"name": "editreview",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"rating\":4, \"reviewText\":\"Great book, just a bit slow.\"}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:5000/api/reviews/1"
+			},
+			"response": []
+		},
+		{
+			"name": "deletereview",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer <JWT_TOKEN>"
+					}
+				],
+				"url": "http://localhost:5000/api/reviews/1"
+			},
+			"response": []
+		},
+		{
+			"name": "readingstats",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": {
+			"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTc0NTQwMzY0MiwiZXhwIjoxNzQ1NDkwMDQyfQ.CldqXb2B5PIGDmzXg5OqwR8UGxqclBkGguUd4w2LYus"
+		}
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
